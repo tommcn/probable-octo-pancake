@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 import dotenv
+import dj_database_url
 
 import os
 
@@ -84,12 +85,15 @@ WSGI_APPLICATION = 'calendarSchool.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+DATABASES = {    
+    'default': {        
+        'ENGINE': 'django.db.backends.sqlite3',        
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),    
     }
 }
+
+db_from_env = dj_database_url.parse('postgres://eeocfkzqgchuwt:8f604c4f769625165abcb2a4cc9cbe66258806e7329b0d76f4448083c7b2cf95@ec2-50-17-90-177.compute-1.amazonaws.com:5432/dat43a4sd7prch' , conn_max_age=600, ssl_require=False)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
