@@ -32,7 +32,7 @@ SECRET_KEY = '94i+jh5sn0mli7^jpiihw^mb%w@5@83tzfc#ilxi_^v&)u#m_y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1", "codes-zoom.herokuapp.com/"]
+ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com"]
 
 
 # Application definition
