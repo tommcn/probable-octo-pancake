@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         {% load static %}
         {% load humanize %}
+        {% load tags %}
         <link rel="stylesheet" type="text/css" href="{% static 'codes/style.css' %}">
         <script src="{% static 'codes/main.js' %}"></script>
 
@@ -19,9 +20,19 @@
 
         <div id="classes" class="classes">
             {% for i in classes %}
-                <div class="menu-class">
-                    <a href=../c/{{i.code}} data-date="{{i.commnence}}">{{ i.nom }} - {{ i.prof }} | {{ i.commnence | naturaltime | capfirst}}</a>
-                </div>
+                {% if i.commnence|in_the_future %}
+                    <div class="menu-class">
+                        <a href=../c/{{i.code}} data-date="{{i.commnence}}">{{ i.nom }} - {{ i.prof }} | {{ i.commnence | naturaltime | capfirst}}</a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <hr>
+            {% for i in classes %}
+                {% if i.commnence|in_the_past %}
+                    <div class="menu-class">
+                        <a href=../c/{{i.code}} data-date="{{i.commnence}}">{{ i.nom }} - {{ i.prof }} | {{ i.commnence | naturaltime | capfirst}}</a>
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
 
@@ -30,9 +41,9 @@
                 {{ focus.nom }}             <br>
                 {{ focus.classe_groupe }}   <br>
                 {{ focus.prof }}            <br>
-                {{ focus.commnence|date:"l" }} {{ focus.commnence }}       <br>
+                {{ focus.commnence|date:"l" | capfirst}} {{ focus.commnence }}       <br>
                 {{ focus.commnence | naturaltime | capfirst }} <br>
-                {{ focus.code }}            <br>
+                <a href={{focus.link}}>{{focus.code}}</a> <br>
             </div>
         {% endif %}
 

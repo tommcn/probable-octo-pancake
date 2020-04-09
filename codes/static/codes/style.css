@@ -77,4 +77,9 @@ html, body {
   width: 80%;
 }
 
+hr {
+  color: white;
+  background-color: white;
+}
+
 /*# sourceMappingURL=style.css.map */

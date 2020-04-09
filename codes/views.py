@@ -4,11 +4,11 @@ from .models import classe
 
 # Create your views here.
 def index(request):
-    c = classe.objects.all()
+    c = classe.objects.all().order_by('commnence')
     return render(request, "codes/index.html", context={"classes": c})
 
 def display_class(request, q="math"):
-    c = classe.objects.all()
+    c = classe.objects.all().order_by('commnence')
     try:
         q = int(q)
     except ValueError:
@@ -19,5 +19,8 @@ def display_class(request, q="math"):
     return render(request, "codes/index.html", context={"classes": c})
 
 def codes(request):
-    c = classe.objects.all()
+    c = classe.objects.all().order_by('commnence')
     return render(request, "codes/codes.html", context={"classes": c})
+
+
+
