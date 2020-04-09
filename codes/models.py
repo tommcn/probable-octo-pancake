@@ -7,5 +7,5 @@ class classe(models.Model):
     prof = models.CharField(max_length=31)
     commnence = models.DateTimeField()
     fini = models.DateTimeField()
-    code = models.IntegerField()
+    code = models.BigIntegerField()
     link = models.CharField(max_length=255)
