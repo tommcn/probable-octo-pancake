@@ -36,16 +36,17 @@
             {% endfor %}
         </div>
 
-        {% if focus %}
+        {% for i in focus %}
             <div class="focus">
-                {{ focus.nom }}             <br>
-                {{ focus.classe_groupe }}   <br>
-                {{ focus.prof }}            <br>
-                {{ focus.commnence|date:"l" | capfirst}} {{ focus.commnence }}       <br>
-                {{ focus.commnence | naturaltime | capfirst }} <br>
-                <a href={{focus.link}} target="_blank">{{focus.code}}</a> <br>
+                {{ i.nom }}             <br>
+                {{ i.classe_groupe }}   <br>
+                {{ i.prof }}            <br>
+                {{ i.commnence|date:"l" | capfirst}} {{ i.commnence }}       <br>
+                {{ i.commnence | naturaltime | capfirst }} <br>
+                <a href={{i.link}} target="_blank">{{i.code}}</a> <br>
             </div>
-        {% endif %}
+            <hr style="background-color: black;">
+        {% endfor %}
 
           
     </body>
