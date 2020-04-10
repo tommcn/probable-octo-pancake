@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Soumission</title>
+        <title>Codes</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        {% load static %}
+        {% load humanize %}
+        {% load tags %}
+        <link rel="stylesheet" type="text/css" href="{% static 'codes/style.css' %}">
+        <script src="{% static 'codes/main.js' %}"></script>
+
     </head>
     <body>
+        <ul class="bar">
+            <li><a class="active" href="/">Matières</a></li>
+            <li><a href="/codes">Codes</a></li>
+            <li><a href="/soumission">Soumission de codes</a></li>
+        </ul>
 
         <form action="{% url 'soumission' %}" method="post" name="new">
             {% csrf_token %}

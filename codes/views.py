@@ -18,7 +18,7 @@ def index(request):
             obj = classe.objects.filter(code=i.code)
             obj.update(commnence=i.commnence+d)
 
-    c = classe.objects.all().order_by('commnence')
+    c = classe.objects.all().order_by('commnence').filter(posted=True)
 
     return render(request, "codes/index.html", context={"classes": c})
 
@@ -26,7 +26,7 @@ def display_class(request, q="math"):
     """
     Displays a classe chosen by the user in a variable "focus"
     """
-    c = classe.objects.all().order_by('commnence')
+    c = classe.objects.all().order_by('commnence').filter(posted=True)
     try:
         q = int(q)
     except ValueError:
@@ -43,7 +43,7 @@ def codes(request):
     """
     Show all the codes and relevant information in a table for quick search
     """
-    c = classe.objects.all().order_by('commnence')
+    c = classe.objects.all().order_by('commnence').filter(posted=True)
     return render(request, "codes/codes.html", context={"classes": c})
 
 def soumission(request):

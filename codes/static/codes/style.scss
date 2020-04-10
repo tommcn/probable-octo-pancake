@@ -1,7 +1,7 @@
 $font-stack:    Georgia,Times,Times New Roman,serif; 
 $primary-color: #333;
 $font-size:     12mm;
-$side-width:    15%;
+$side-width:    9cm;
 
 
 html, body {
@@ -82,13 +82,13 @@ html, body {
 }
 
 .focus {
-    margin-left: 20%;
+    margin-left: $side-width + 2;
     margin-top: 2%;
 }
 
 .table-class {
     float: right;
-    width: 95-$side-width;
+    width: calc(100% - $side-width);
 }
 
 hr {
