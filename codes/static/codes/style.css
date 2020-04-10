@@ -51,7 +51,7 @@ html, body {
   width: 15%;
   padding: 20px;
   bottom: 0;
-  height: 80%;
+  height: fit-content;
   margin-left: 20px;
 }
 
