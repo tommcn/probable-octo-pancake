@@ -48,10 +48,10 @@ html, body {
 .classes {
   background-color: #333;
   float: left;
-  width: 15%;
+  width: 9cm;
   padding: 20px;
   bottom: 0;
-  height: 80%;
+  height: fit-content;
   margin-left: 20px;
 }
 
@@ -68,13 +68,18 @@ html, body {
 }
 
 .focus {
-  margin-left: 20%;
+  margin-left: 11cm;
   margin-top: 2%;
 }
 
 .table-class {
   float: right;
-  width: 80%;
+  width: calc(100% - $side-width);
+}
+
+hr {
+  color: white;
+  background-color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
