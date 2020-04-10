@@ -31,9 +31,13 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = '94i+jh5sn0mli7^jpiihw^mb%w@5@83tzfc#ilxi_^v&)u#m_y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com"]
+
+# The redirect login url used by @login_required
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#login-url
+LOGIN_URL = 'login/'
 
 
 # Application definition

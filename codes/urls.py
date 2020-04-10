@@ -7,4 +7,5 @@ urlpatterns = [
     path('c/<str:q>', views.display_class, name="classDetail"),
     path('codes', views.codes, name="codes"),
     path('soumission', views.soumission, name="soumission"),
+    path('login/', views.login_view, name="login")
 ]

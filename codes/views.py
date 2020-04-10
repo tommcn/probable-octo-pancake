@@ -2,11 +2,27 @@ import datetime
 
 import pytz 
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 
 from .models import classe
 
 # Create your views here.
+def login_view(request):    # Login page for restricteed pages
+    if request.method == 'POST':
+        username = "user"
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("/")
+        else:
+            return render(request, "codes/login.html", {"message": "Mauvais mot de passe."})
+    else:
+        return render(request, "codes/login.html")
+
+@login_required
 def index(request):
     """
     The view shows a blank screen with both navbars    
@@ -39,6 +55,7 @@ def display_class(request, q="math"):
         return render(request, "codes/index.html", context={"classes": c, "focus": focus})
     return render(request, "codes/index.html", context={"classes": c})
 
+@login_required
 def codes(request):
     """
     Show all the codes and relevant information in a table for quick search
@@ -46,6 +63,7 @@ def codes(request):
     c = classe.objects.all().order_by('commnence').filter(posted=True)
     return render(request, "codes/codes.html", context={"classes": c})
 
+@login_required
 def soumission(request):
     if request.method == 'POST':
         nom = request.POST["nom"]
