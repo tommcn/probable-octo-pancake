@@ -54,20 +54,20 @@ def soumission(request):
         commnence = request.POST["commnence"]
         code = request.POST["code"]
         link = request.POST["link"]
- #       try:
-        n = classe()
-        n.nom = nom
-        n.classe_groupe = classes
-        n.prof = prof
-        n.commnence = commnence
-        n.fini = commnence
-        n.code = code
-        n.link = link
-        n.save()
-        print(n)
- #       except Exception as e:
- #       print(e)
- #           return render(request, "codes/submit.html") 
+        try:
+            n = classe()
+            n.nom = nom
+            n.classe_groupe = classes
+            n.prof = prof
+            n.commnence = commnence
+            n.fini = commnence
+            n.code = code
+            n.link = link
+            n.save()
+            print(n)
+        except Exception as e:
+           print(e)
+           return render(request, "codes/submit.html") 
         return redirect("codes")
     else:
         return render(request, "codes/submit.html")
