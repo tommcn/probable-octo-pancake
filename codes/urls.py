@@ -5,5 +5,6 @@ from . import views
 urlpatterns = [
     path('', views.index, name="index"),
     path('c/<str:q>', views.display_class, name="classDetail"),
-    path('codes', views.codes, name="codes")
+    path('codes', views.codes, name="codes"),
+    path('soumission', views.soumission, name="soumission"),
 ]

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Soumission</title>
+    </head>
+    <body>
+
+        <form action="{% url 'soumission' %}" method="post" name="new">
+            {% csrf_token %}
+            <input name="nom" type="text" placeholder="matiere" maxlength="127" required/><br><br>
+            <input name="classe_groupe" type="text" placeholder="Classe ou Groupe (ex: 3R)" maxlength="8" required><br><br>
+            <input name="prof" type="text" placeholder="Nom du proffesseur" maxlength="31" required/><br>
+            <input name="commnence" type="datetime-local" required/> <br><br>
+            <input name="code" type="number" placeholder="Code" maxlength="31" required/><br>
+            <input name="link" type="text" placeholder="Lien" maxlength="255" required/><br>
+            <br>
+            <input class="submitbtn" type="submit" value="Submit"/>
+        </form>
+    
+    </body>
+</html>

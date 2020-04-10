@@ -13,3 +13,4 @@ class classe(models.Model):
     fini = models.DateTimeField()
     code = models.BigIntegerField(help_text="Le code du cours pour Zoom")
     link = models.CharField(max_length=255)
+    posted = models.BooleanField(default=False)

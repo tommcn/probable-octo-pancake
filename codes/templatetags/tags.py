@@ -11,7 +11,6 @@ def in_the_past(value):
     Is the datetime object in the past (boolean)
     """
     now = datetime.now(pytz.utc)
-    print(value < now)
     return value < now
 
 
@@ -21,5 +20,4 @@ def in_the_future(value):
     Is the datetime object in the future (boolean)
     """
     now = datetime.now(pytz.utc)
-    print(value > now)
     return value > now

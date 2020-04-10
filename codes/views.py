@@ -2,7 +2,7 @@ import datetime
 
 import pytz 
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import classe
 
@@ -46,6 +46,31 @@ def codes(request):
     c = classe.objects.all().order_by('commnence')
     return render(request, "codes/codes.html", context={"classes": c})
 
+def soumission(request):
+    if request.method == 'POST':
+        nom = request.POST["nom"]
+        classes = request.POST["classe_groupe"]
+        prof = request.POST["prof"]
+        commnence = request.POST["commnence"]
+        code = request.POST["code"]
+        link = request.POST["link"]
+ #       try:
+        n = classe()
+        n.nom = nom
+        n.classe_groupe = classes
+        n.prof = prof
+        n.commnence = commnence
+        n.fini = commnence
+        n.code = code
+        n.link = link
+        n.save()
+        print(n)
+ #       except Exception as e:
+ #       print(e)
+ #           return render(request, "codes/submit.html") 
+        return redirect("codes")
+    else:
+        return render(request, "codes/submit.html")
 
 
 
@@ -55,7 +80,6 @@ def in_the_past(value):
     Is the datetime object in the past (boolean)
     """
     now = datetime.datetime.now(pytz.utc)
-    print(value < now)
     return value < now
 
 def in_the_future(value):
@@ -63,5 +87,4 @@ def in_the_future(value):
     Is the datetime object in the future (boolean)
     """
     now = datetime.datetime.now(pytz.utc)
-    print(value > now)
     return value > now
