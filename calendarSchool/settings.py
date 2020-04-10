@@ -28,10 +28,10 @@ if os.path.isfile(dotenv_file):
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '94i+jh5sn0mli7^jpiihw^mb%w@5@83tzfc#ilxi_^v&)u#m_y'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com"]
 
@@ -96,7 +96,7 @@ DATABASES = {
     }
 }
 
-db_from_env = dj_database_url.parse('postgres://eeocfkzqgchuwt:8f604c4f769625165abcb2a4cc9cbe66258806e7329b0d76f4448083c7b2cf95@ec2-50-17-90-177.compute-1.amazonaws.com:5432/dat43a4sd7prch' , conn_max_age=600, ssl_require=False)
+db_from_env = dj_database_url.parse(os.environ.get("DATABASE_URL") , conn_max_age=600, ssl_require=False)
 DATABASES['default'].update(db_from_env)
 
 
