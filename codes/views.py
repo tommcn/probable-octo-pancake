@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 
-from .models import classe
+from .models import classe, GROUPES_CHOICES
 
 # Create your views here.
 def login_view(request):    # Login page for restricteed pages
@@ -88,7 +88,7 @@ def soumission(request):
            return render(request, "codes/submit.html") 
         return redirect("codes")
     else:
-        return render(request, "codes/submit.html")
+        return render(request, "codes/submit.html", context={"choises": GROUPES_CHOICES})
 
 
 

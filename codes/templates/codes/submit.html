@@ -1,33 +1,38 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Codes</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+{% extends 'codes/template.html' %}
+
+{% block body %}
         {% load static %}
         {% load humanize %}
         {% load tags %}
-        <link rel="stylesheet" type="text/css" href="{% static 'codes/style.css' %}">
-        <script src="{% static 'codes/main.js' %}"></script>
-
-    </head>
-    <body>
-        <ul class="bar">
-            <li><a class="active" href="/">Matières</a></li>
-            <li><a href="/codes">Codes</a></li>
-            <li><a href="/soumission">Soumission de codes</a></li>
-        </ul>
 
         <form action="{% url 'soumission' %}" method="post" name="new">
             {% csrf_token %}
-            <input name="nom" type="text" placeholder="matiere" maxlength="127" required/><br><br>
-            <input name="classe_groupe" type="text" placeholder="Classe ou Groupe (ex: 3R)" maxlength="8" required><br><br>
-            <input name="prof" type="text" placeholder="Nom du proffesseur" maxlength="31" required/><br>
-            <input name="commnence" type="datetime-local" required/> <br><br>
-            <input name="code" type="number" placeholder="Code" maxlength="31" required/><br>
+            <input name="nom" type="text" placeholder="Matiere" maxlength="127" required/><br><br>
+
+            <select name="classe_groupe" id="classe_groupe">
+                {% for i in choises %}
+                <option value={{i.0}}>{{i.1}}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <input name="prof" type="text" placeholder="Nom du professeur" maxlength="31" required/><br><br>
+            <input name="commnence" type="datetime-local" required style="width: 240px;"/> <br><br>
+            <input name="code" type="number" placeholder="Code" maxlength="31" required/><br><br>
             <input name="link" type="text" placeholder="Lien" maxlength="255" required/><br>
             <br>
             <input class="submitbtn" type="submit" value="Submit"/>
         </form>
+
+
+        <style>
+            body {
+                background-attachment: fixed;
+                background-image: url("{% static 'codes/img/donut.png' %}");
+                background-position: center;
+                background-repeat: no-repeat;
+                background-color:rgb(116, 144, 153);
+            }
+        </style>
+
     
-    </body>
-</html>
+{% endblock body %}
