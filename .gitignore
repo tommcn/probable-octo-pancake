@@ -1,3 +1,5 @@
 .env
 env.txt
 calendarSchool/static
+htmlcov
+.coverage

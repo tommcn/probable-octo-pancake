@@ -3,8 +3,10 @@
     <head>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             {% load static %}
-            <link rel="stylesheet" type="text/css" href="{% static 'web/style.css' %}">
-            <title>Blog</title>
+            <link rel="stylesheet" type="text/css" href="{% static 'codes/style.css' %}">
+            <title>Login</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     </head>
     <body>
         <h2>Pour acceder au site web, veuillez entrez le code.</h2>
@@ -13,10 +15,13 @@
                 {{ message }}
             </div>
         {% endif %}
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            <input name="password" type="password" placeholder="Mot de passe"/>
-            <input class="submitbtn" type="submit" value="Login"/>
-        </form>
-    </body>
+        <div id=login>
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+                <input name="password" type="password" placeholder="Mot de passe"/> <br>
+                <input class="submitbtn" type="submit" value="Login"/>
+            </form>
+        </div>
+        
+   </body>
 </html>

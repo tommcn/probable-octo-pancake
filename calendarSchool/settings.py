@@ -13,6 +13,8 @@ import dotenv
 import dj_database_url
 
 import os
+import sys
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -92,12 +94,18 @@ WSGI_APPLICATION = 'calendarSchool.wsgi.application'
 DATABASES = {    
     'default': {        
         'ENGINE': 'django.db.backends.sqlite3',        
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),    
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),   
+        'TEST': {
+            'ENGINE': 'django.db.backends.sqlite3',
+        } 
     }
 }
 
 db_from_env = dj_database_url.parse(os.environ.get("DATABASE_URL") , conn_max_age=600, ssl_require=False)
 DATABASES['default'].update(db_from_env)
+
+if 'test' in sys.argv or 'test_coverage' in sys.argv: #Covers regular testing and django-coverage
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 
 # Password validation

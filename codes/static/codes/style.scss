@@ -31,6 +31,7 @@ html, body {
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
+        font-size: 5mm;
     }
 
     li a:hover {
@@ -62,10 +63,26 @@ html, body {
     float: left;
     width: $side-width;
     padding: 20px;
-    bottom: 0;
     height: fit-content;
-    margin-left: 20px;
+    margin-right:20px;    
 }
+
+.wrapper { 
+    border : 2px solid #000; 
+    overflow:hidden;
+}
+  
+.wrapper div {
+     min-height: 200px;
+     padding: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+  
+
 
 .menu-class {
     color: #fff;
@@ -82,14 +99,18 @@ html, body {
 }
 
 .focus {
-    margin-left: $side-width + 2;
+    overflow:hidden;
+    margin:10px;
     margin-top: 2%;
+    float: right;
+    width: calc(100% - 11cm);
 }
 
 .table-class {
     float: right;
     width: 100%;
     align-self: center;
+    overflow-x: auto;
 }
 
 hr {
@@ -144,5 +165,47 @@ label {
     border-radius: 3px;
 }
 
+#login {
+    border: 1px solid black;
+    width: fit-content;
+    padding: 5px;
 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
 
+    .submitbtn {
+        width: fit-content;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #login {
+        width: 100%;
+
+        input {
+            width: 100%;
+        }
+    }
+
+    .bar {
+        font-size: 7mm;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    .classes {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .focus {
+        width: 100%;
+        padding: 20px;
+    }
+}
+  
