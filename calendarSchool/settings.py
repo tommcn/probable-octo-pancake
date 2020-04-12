@@ -39,7 +39,6 @@ ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com"]
 
 # The redirect login url used by @login_required
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#login-url
-LOGIN_URL = 'login/'
 
 
 # Application definition
@@ -53,8 +52,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'django.contrib.admindocs',
-    'codes'
+    'codes',
+    'social_django',
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -139,6 +141,22 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("GOOGLE_OAUTH2_SECRET")
+
+LOGIN_URL = 'login/'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 
 # Static files (CSS, JavaScript, Images)

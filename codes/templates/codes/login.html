@@ -10,18 +10,78 @@
     </head>
     <body>
         <h2>Pour acceder au site web, veuillez entrez le code.</h2>
+        <p>Vous pouvez aussi vous identifier avec Google pour avoir accès à plus de 
         {% if message %}
             <div>
                 {{ message }}
             </div>
         {% endif %}
-        <div id=login>
-            <form action="{% url 'login' %}" method="post">
-                {% csrf_token %}
-                <input name="password" type="password" placeholder="Mot de passe"/> <br>
-                <input class="submitbtn" type="submit" value="Login"/>
-            </form>
+
+        <div id="login" class="container">
+            <div id="first">
+                <form action="{% url 'codes:login' %}" method="post">
+                    {% csrf_token %}
+                    <input type="password" name="password" placeholder="Mot de passe" required style="width: 200px"> <br>
+                    <input type="submit" value="Connexion" style="width: 200px">
+                </form>
+
+            </div>
+            <div class="vl" id=third></div>
+            <div id="second">
+                <a class="btn btn-primary googlesigninbtn" href="{% url 'social:begin' 'google-oauth2' %}">
+                    <img width=191px height=46px class="googlesignin" src="{% static 'codes/img/google_signin_normal.png' %}" onclick="{% url 'social:begin' 'google-oauth2' %}">
+                </a>
+            </div>
+            <div id="clear"></div>
         </div>
+
+
+
+
+        <style>
+            .container {
+                width: 600px;
+                margin: auto;
+                padding: 20px;
+            }
+            #first {
+                width: 200px;
+                float: left;
+                height: fit-content;
+            }
+            #second {
+                width: 200px;
+                float: right;
+                height: fit-content;
+            }
+            #third {
+                width: 20px;
+                float: left;
+            }
+            #clear {
+                clear: both;
+            }
+
+            .googlesignin {
+                content:url("{% static 'codes/img/google_signin_normal.png' %}");
+            }
+
+            .googlesignin:focus {
+                content:url("{% static 'codes/img/google_signin_focus.png' %}");
+            }
+
+            .googlesignin:active {
+                content:url("{% static 'codes/img/google_signin_pressed.png' %}");
+            }
+
+            .googlesigninbtn {
+                width: 191px;
+                height: 46px;
+                border: 0;
+                padding: 0;
+                background-color: white;
+            }
+        </style>
         
    </body>
 </html>

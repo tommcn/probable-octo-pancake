@@ -161,12 +161,22 @@ label {
   width: fit-content;
 }
 
+.vl {
+  border-left: 6px solid #818181;
+  height: 80px;
+  margin-left: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   #login {
     width: 100%;
   }
   #login input {
     width: 100%;
+  }
+
+  .vl {
+    display: none;
   }
 
   .bar {

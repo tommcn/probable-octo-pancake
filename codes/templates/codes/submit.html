@@ -5,7 +5,7 @@
         {% load humanize %}
         {% load tags %}
 
-        <form action="{% url 'soumission' %}" method="post" name="new">
+        <form action="{% url 'codes:soumission' %}" method="post" name="new">
             {% csrf_token %}
             <input name="nom" type="text" placeholder="Matiere" maxlength="127" required/><br><br>
 
@@ -22,6 +22,8 @@
             <br>
             <input class="submitbtn" type="submit" value="Submit"/>
         </form>
+
+        
 
 
         <style>

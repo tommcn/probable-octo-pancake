@@ -181,6 +181,13 @@ label {
     }
 }
 
+.vl {
+    border-left: 6px solid rgb(129, 129, 129);
+    height: 80px;
+    margin-left: 20px;
+}
+  
+
 @media only screen and (max-width: 600px) {
     #login {
         width: 100%;
@@ -188,6 +195,10 @@ label {
         input {
             width: 100%;
         }
+    }
+
+    .vl {
+        display: none;
     }
 
     .bar {

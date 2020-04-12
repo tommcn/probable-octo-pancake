@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
-    path('', include('codes.urls'))
+    path('', include('codes.urls', namespace="codes")),
+    path('auth/', include('social_django.urls', namespace='social')),
 ]
+

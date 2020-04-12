@@ -7,6 +7,9 @@ from .models import classe
 
 PASSWORD_INPUT = '<input name="password" type="password" placeholder="Mot de passe"/>'
 
+# pylint: disable=no-member
+
+
 # Create your tests here.
 class classeTestCase(TestCase):
     def setUp(self):

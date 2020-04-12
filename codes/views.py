@@ -3,10 +3,12 @@ import datetime
 import pytz 
 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
 from .models import classe, GROUPES_CHOICES
+
+# pylint: disable=no-member
 
 # Create your views here.
 def login_view(request):    # Login page for restricteed pages
@@ -21,6 +23,10 @@ def login_view(request):    # Login page for restricteed pages
             return render(request, "codes/login.html", {"message": "Mauvais mot de passe."})
     else:
         return render(request, "codes/login.html")
+
+def logout_view(request):
+    logout(request)
+    return redirect("/")
 
 @login_required
 def index(request):
