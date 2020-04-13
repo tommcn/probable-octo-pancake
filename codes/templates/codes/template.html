@@ -24,7 +24,11 @@
             <li><a href="/codes">Codes</a></li>
             <li><a href="/soumission">Soumission de codes</a></li>
             <li><a href="/classes">Mes classes</a></li>
-            <li  style="float: right"><a href="/logout">Déconnexion -- {{ user.username }}</a></li>
+            {% if user.first_name %}
+                <li  style="float: right"><a href="/logout">Déconnexion -- {{ user.first_name }} {{ user.last_name }}</a></li>
+            {% else %}
+                <li  style="float: right"><a href="/logout">Déconnexion -- {{ user.username }}</a></li>
+            {% endif %}
         </ul>
         {% if message %}
             <div class="alert alert-warning alert-dismissible fade show" role="alert">

@@ -22,7 +22,10 @@ def login_view(request):    # Login page for restricteed pages
         else:
             return render(request, "codes/login.html", {"message": "Mauvais mot de passe."})
     else:
-        return render(request, "codes/login.html")
+        if request.user.is_authenticated:
+            return redirect("/")
+        else:
+            return render(request, "codes/login.html")
 
 def logout_view(request):
     logout(request)
@@ -44,6 +47,7 @@ def index(request):
 
     return render(request, "codes/index.html", context={"classes": c})
 
+@login_required
 def display_class(request, q="math"):
     """
     Displays a classe chosen by the user in a variable "focus"
