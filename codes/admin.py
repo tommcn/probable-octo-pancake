@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import classe
+from django.db import models
+from django.contrib.auth.models import User
+
+from .models import classe, Profile
 
 # Register your models here.
 
@@ -19,5 +22,9 @@ class classeA(admin.ModelAdmin):
     list_display = ('nom', 'classe_groupe', 'prof', 'commnence', 'code', 'posted')
     list_filter = ('classe_groupe','prof', 'posted')
     actions = [publish, unpublish]
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('user',)
 
 admin.site.site_header = "Interface d'Administration"

@@ -1,0 +1,52 @@
+{% extends 'codes/template.html' %}
+
+{% block body %}
+        {% load static %}
+        {% load humanize %}
+        {% load tags %}
+        <div class="table-class">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Matiere</th>
+                        <th scope="col">Classe/Groupe</th>
+                        <th scope="col">Prof</th>
+                        <th scope="col">Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in classes %}
+                        <tr>
+                            <td>{{ i.nom }}</td>
+                            <td>{{ i.classe_groupe }}</td>
+                            <td>{{ i.prof }}</td>
+                            <td><a href={{i.link}} target="_blank">{{i.code}}</a> <br></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <br>
+        <br>    
+        <button type="button" class="collapsible">Veuillez choisir les classes dans lesquelles vous êtes afin que l'on puisse vous montrez les classes qui vous sont les plus pertinentes</button>
+        <div class="content">
+            <form action="{% url 'codes:classes' %}" method="post" name="new">
+                {% csrf_token %}
+                    {% for i in all_g %}
+                        {% if i.0 in checked %}
+                            <input type="checkbox" name="{{i.0}}" value="{{i.0}}" class="select" checked>
+                        {% else %}
+                            <input type="checkbox" name="{{i.0}}" value="{{i.0}}" class="select">
+                        {% endif %}
+                        <label for="{{i.0}}" class="selectlabel"> {{ i.0 }}</label><br><br>
+                    {% endfor %}
+                <input class="submitbtn" type="submit" value="Soumettre"/>
+            </form>
+        </div>
+
+          
+    </body>
+</html>
+
+{% endblock body %}

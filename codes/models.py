@@ -1,4 +1,10 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.contrib.auth.models import User
+from django.dispatch import receiver
+
+
+# pylint: disable=no-member
 
 # Create your models here.
 GROUPES_CHOICES = [
@@ -34,3 +40,26 @@ class classe(models.Model):
     code = models.BigIntegerField(help_text="Le code du cours pour Zoom")
     link = models.CharField(max_length=255)
     posted = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.nom
+
+
+class Profile(models.Model):
+    """
+    A model for representing a user profile
+    Links to an user
+    Contains class subscribed to
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    subscribed_to = models.ManyToManyField(classe, blank=True)
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()

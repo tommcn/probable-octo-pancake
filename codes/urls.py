@@ -11,4 +11,5 @@ urlpatterns = [
     path('soumission', views.soumission, name="soumission"),
     path('login/', views.login_view, name="login"),
     path('logout/', views.logout_view, name="logout"),
+    path('classes/', views.user_classes, name="classes")
 ]
