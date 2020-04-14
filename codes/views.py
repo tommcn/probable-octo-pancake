@@ -96,7 +96,7 @@ def soumission(request):
         except Exception as e:
            print(e)
            return render(request, "codes/submit.html") 
-        return redirect("codes")
+        return redirect("codes:codes")
     else:
         return render(request, "codes/submit.html", context={"choises": GROUPES_CHOICES})
 
