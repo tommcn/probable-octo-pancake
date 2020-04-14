@@ -98,21 +98,21 @@ html, body {
     }
 }
 
-.focus {
-    overflow:hidden;
-    margin:10px;
-    margin-top: 2%;
-    width: fit-content;
-    float: right;
-    align-self: center;
-}
-
+	
+.focus {	
+    overflow:hidden;	
+    margin:10px;	
+    margin-top: 2%;	
+    float: right;	
+    width: calc(100% - 11cm);	
+}	
+/*
 .allFocus {
     margin: auto;
     height: 300px;
     float: left;
 }
-  
+*/
 
 .table-class {
     float: right;
