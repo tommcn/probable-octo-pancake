@@ -21,10 +21,7 @@ GROUPES_CHOICES = [
     ("3GROUPE2","3Groupe2"),
     ("3GROUPE3","3Groupe3"),
     ("3GROUPE4","3Groupe4"),
-    ("3GROUPEART1","3GroupeArt1"),
-    ("3GROUPEART2","3GroupeArt2"),
-    ("3GROUPEART3","3GroupeArt3"),
-    ("3GROUPEART4","3GroupeArt4"),
+    ("3GROUPEART","3GroupeArt"),
 ]
 
 class classe(models.Model):
