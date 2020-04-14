@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+            <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             {% load static %}
             <link rel="stylesheet" type="text/css" href="{% static 'codes/style.css' %}">
@@ -9,59 +15,42 @@
 
     </head>
     <body>
-        <h2>Pour acceder au site web, veuillez entrez le code.</h2>
-        <p>Vous pouvez aussi vous identifier avec Google pour pouvoir sauvegarder vos cours.
         {% if message %}
             <div>
                 {{ message }}
             </div>
         {% endif %}
 
-        <div id="login" class="container">
-            <div id="first">
-                <form action="{% url 'codes:login' %}" method="post">
-                    {% csrf_token %}
-                    <input type="password" name="password" placeholder="Mot de passe" required style="width: 200px"> <br>
-                    <input type="submit" value="Connexion" style="width: 200px">
-                </form>
 
+       <div class="login-form">
+           <form action="{% url 'codes:login' %}" method="post">
+               {% csrf_token %}
+                <h2 class="text-center">Connexion</h2>		
+                <div class="text-center social-btn">
+                    <a class="googlesigninbtn" href="{% url 'social:begin' 'google-oauth2' %}">
+                        <img width=191px height=46px class="googlesignin" src="{% static 'codes/img/google_signin_normal.png' %}" onclick="{% url 'social:begin' 'google-oauth2' %}">
+                    </a>
+                </div>
+                <div class="or-seperator"><i>ou</i></div>
+                <div class="form-group">
+					<div class="form-group">
+						<input type="password" name="password" class="form-control" placeholder="Mot de passe" required="required">					
+					</div>
+                </div>        
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block login-btn">Connexion</button>
+                </div>
+            </form>
+            <div class="hint-text small">                
+                    <span>S'enregistrer via Google permet la sauvegarde de vos classes dans l'onglet "mes classes".</span>
             </div>
-            <div class="vl" id=third></div>
-            <div id="second">
-                <a class="btn btn-primary googlesigninbtn" href="{% url 'social:begin' 'google-oauth2' %}">
-                    <img width=191px height=46px class="googlesignin" src="{% static 'codes/img/google_signin_normal.png' %}" onclick="{% url 'social:begin' 'google-oauth2' %}">
-                </a>
-            </div>
-            <div id="clear"></div>
         </div>
 
 
 
 
-        <style>
-            .container {
-                width: 600px;
-                margin: auto;
-                padding: 20px;
-            }
-            #first {
-                width: 200px;
-                float: left;
-                height: fit-content;
-            }
-            #second {
-                width: 200px;
-                float: right;
-                height: fit-content;
-            }
-            #third {
-                width: 20px;
-                float: left;
-            }
-            #clear {
-                clear: both;
-            }
 
+        <style>
             .googlesignin {
                 content:url("{% static 'codes/img/google_signin_normal.png' %}");
             }
@@ -75,13 +64,43 @@
             }
 
             .googlesigninbtn {
-                width: 191px;
-                height: 46px;
+                width: 0;
+                height: 0;
                 border: 0;
                 padding: 0;
                 background-color: white;
             }
         </style>
+
+        <style type="text/css">
+            .login-form {
+                width: 340px;
+                margin: 30px auto;
+            }
+            .login-form form {
+                margin-bottom: 15px;
+                background: #f7f7f7;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+                padding: 30px;
+            }
+            .login-form h2 {
+                margin: 0 0 15px;
+            }
+            .or-seperator {
+                margin: 20px 0 10px;
+                text-align: center;
+                border-top: 1px solid #ccc;
+            }
+            .or-seperator i {
+                padding: 0 10px;
+                background: #f7f7f7;
+                position: relative;
+                top: -11px;
+                z-index: 1;
+            }
+
+</style>
+
         
    </body>
 </html>

@@ -7,20 +7,6 @@
         {% load tags %}
         <div class="wrap">
 
-            {% for i in focus %}
-                <div class="focus">
-                    {{ i.nom }}             <br>
-                    {{ i.classe_groupe }}   <br>
-                    {{ i.prof }}            <br>
-                    {{ i.commnence|date:"l" | capfirst}} {{ i.commnence }}       <br>
-                    {{ i.commnence | naturaltime | capfirst }} <br>
-                    <a href={{i.link}} target="_blank">{{i.code}}</a> <br>
-                    <hr style="background-color: black;">
-
-                </div>
-            {% endfor %}
-
-
 
             <div id="classes" class="classes">
                 {% for i in classes %}
@@ -30,7 +16,7 @@
                         </div>
                     {% endif %}
                 {% endfor %}
-                <hr>
+                
                 {% for i in classes %}
                     {% if i.commnence|in_the_past %}
                         <div class="menu-class">
@@ -38,7 +24,23 @@
                         </div>
                     {% endif %}
                 {% endfor %}
+                <hr>
             </div>
+
+            <div class="allFocus">
+                {% for i in focus %}
+                    <div class="focus">
+                        {{ i.nom }}             <br>
+                        {{ i.classe_groupe }}   <br>
+                        {{ i.prof }}            <br>
+                        {{ i.commnence|date:"l" | capfirst}} {{ i.commnence }}       <br>
+                        {{ i.commnence | naturaltime | capfirst }} <br>
+                        <a href={{i.link}} target="_blank">{{i.code}}</a> <br>
+                        <hr style="background-color: black;">
+                    </div>
+                {% endfor %}
+            </div>
+
 
             <div class="clear"></div>
 
